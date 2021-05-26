@@ -5,6 +5,14 @@ on:
 #    - cron: 5 6 * * 0
   watch:
     types: started
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log Level'
+        required: true
+        default: 'info'
+      tags:
+        description: ''
 
 jobs:
   build:
@@ -122,23 +130,23 @@ jobs:
         gzip -d *.gz && exit 0
         gzip --best *.img
         ls -Ahl
-        sha256sum openwrt*r4s* | tee R4S-GC404-$(date +%Y-%m-%d)-21.02.sha256sum
-        zip R4S-GC404-$(date +%Y-%m-%d)-21.02-ext4.zip *r4s*ext4*
-        zip R4S-GC404-$(date +%Y-%m-%d)-21.02-sfs.zip *r4s*squashfs*
+        sha256sum openwrt*r4s* | tee R4S-GC404-$(date +%Y-%m-%d)-21.02.01.sha256sum
+        zip R4S-GC404-$(date +%Y-%m-%d)-21.02.01-ext4.zip *r4s*ext4*
+        zip R4S-GC404-$(date +%Y-%m-%d)-21.02.01-sfs.zip *r4s*squashfs*
         ls -Ahl
     - name: Upload artifact
       uses: actions/upload-artifact@main
       with:
-        name: OpenWRT_21.02
+        name: OpenWRT_21.02.01
         path: ./artifact/
 
     - name: Create release
       id: create_release
       uses: ncipollo/release-action@v1.8.0
       with:
-        name: OpenWRT-R2S-R4S-X86-21.02.0-RC1
+        name: OpenWRT-R2S-R4S-X86-21.02.01
         allowUpdates: true
-        tag: 21.02.0-rc1
+        tag: 21.02.01
         commit: master
         replacesArtifacts: true
         token: ${{ secrets.workflow_token }}

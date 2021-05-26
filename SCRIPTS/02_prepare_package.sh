@@ -97,8 +97,8 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
 cp -rf ../PATCH/duplicate/luci-app-control-weburl ./package/new/luci-app-control-weburl
 # 广告过滤 Adbyby
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-adbyby-plus package/lean/luci-app-adbyby-plus
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby package/lean/adbyby
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-adbyby-plus package/lean/luci-app-adbyby-plus
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby package/lean/adbyby
 # 广告过滤 AdGuard
 cp -rf ../openwrt-lienol/package/diy/luci-app-adguardhome ./package/new/luci-app-adguardhome
 rm -rf ./feeds/packages/net/adguardhome
@@ -106,10 +106,10 @@ svn co https://github.com/openwrt/packages/trunk/net/adguardhome feeds/packages/
 sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' ./feeds/packages/net/adguardhome/Makefile
 sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 # Argon 主题
-git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
-wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/footer.htm
-wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/header.htm
-git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
+# git clone -b master --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/new/luci-theme-argon
+# wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/footer.htm
+# wget -P ./package/new/luci-theme-argon/luasrc/view/themes/argon -N https://github.com/jerrykuku/luci-theme-argon/raw/9fdcfc866ca80d8d094d554c6aedc18682661973/luasrc/view/themes/argon/header.htm
+# git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/new/luci-app-argon-config
 # MAC 地址与 IP 绑定
 svn co https://github.com/QiuSimons/OpenWrt_luci-app/trunk/lean/luci-app-arpbind package/lean/luci-app-arpbind
 # 定时重启
@@ -149,35 +149,35 @@ svn co https://github.com/QiuSimons/OpenWrt_luci-app/trunk/others/luci-app-tence
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns feeds/luci/applications/luci-app-aliddns
 ln -sf ../../../feeds/luci/applications/luci-app-aliddns ./package/feeds/luci/luci-app-aliddns
 # Docker 容器（会导致 OpenWrt 出现 UDP 转发问题，慎用）
-sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+# sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
 # Edge 主题
-git clone -b master --depth 1 https://github.com/garypang13/luci-theme-edge.git package/new/luci-theme-edge
+# git clone -b master --depth 1 https://github.com/garypang13/luci-theme-edge.git package/new/luci-theme-edge
 # FRP 内网穿透
-rm -rf ./feeds/luci/applications/luci-app-frps
-rm -rf ./feeds/luci/applications/luci-app-frpc
-rm -rf ./feeds/packages/net/frp
-rm -f ./package/feeds/packages/frp
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-frps package/lean/luci-app-frps
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-frpc package/lean/luci-app-frpc
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/frp package/lean/frp
+# rm -rf ./feeds/luci/applications/luci-app-frps
+# rm -rf ./feeds/luci/applications/luci-app-frpc
+# rm -rf ./feeds/packages/net/frp
+# rm -f ./package/feeds/packages/frp
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-frps package/lean/luci-app-frps
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-frpc package/lean/luci-app-frpc
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/frp package/lean/frp
 # IPSec
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ipsec-vpnd package/lean/luci-app-ipsec-vpnd
 # IPv6 兼容助手
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipv6-helper package/lean/ipv6-helper
 # 京东签到 By Jerrykuku
-git clone --depth 1 https://github.com/jerrykuku/node-request.git package/new/node-request
-svn co -r131 https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk package/new/luci-app-jd-dailybonus
-pushd package/new/luci-app-jd-dailybonus
-sed -i 's/wget-ssl/wget/g' root/usr/share/jd-dailybonus/newapp.sh luasrc/controller/jd-dailybonus.lua
-popd
-rm -rf ./package/new/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
-wget -P package/new/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/ https://github.com/NobyDa/Script/raw/master/JD-DailyBonus/JD_DailyBonus.js
+# git clone --depth 1 https://github.com/jerrykuku/node-request.git package/new/node-request
+# svn co -r131 https://github.com/jerrykuku/luci-app-jd-dailybonus/trunk package/new/luci-app-jd-dailybonus
+# pushd package/new/luci-app-jd-dailybonus
+# sed -i 's/wget-ssl/wget/g' root/usr/share/jd-dailybonus/newapp.sh luasrc/controller/jd-dailybonus.lua
+# popd
+# rm -rf ./package/new/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/JD_DailyBonus.js
+# wget -P package/new/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/ https://github.com/NobyDa/Script/raw/master/JD-DailyBonus/JD_DailyBonus.js
 # 回滚通用即插即用
 #rm -rf ./feeds/packages/net/miniupnpd
 #svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 # MentoHUST
-git clone --depth 1 https://github.com/BoringCat/luci-app-mentohust package/new/luci-app-mentohust
-git clone --depth 1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk package/new/MentoHUST
+# git clone --depth 1 https://github.com/BoringCat/luci-app-mentohust package/new/luci-app-mentohust
+# git clone --depth 1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk package/new/MentoHUST
 # Moschinadns
 svn co https://github.com/QiuSimons/openwrt-packages/branches/main/mos-chinadns package/new/mos-chinadns
 svn co https://github.com/QiuSimons/openwrt-packages/branches/main/luci-app-moschinadns package/new/luci-app-moschinadns
@@ -185,9 +185,9 @@ svn co https://github.com/QiuSimons/openwrt-packages/branches/main/luci-app-mosc
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/new/mosdns
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/new/luci-app-mosdns
 # 流量监管
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata package/lean/luci-app-netdata
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata package/lean/luci-app-netdata
 # 上网 APP 过滤
-git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
+# git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
 # OLED 驱动程序
 git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
 # OpenClash
@@ -195,9 +195,9 @@ git clone -b master --depth 1 https://github.com/vernesong/OpenClash.git package
 # 花生壳内网穿透
 #svn co https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
 #svn co https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/phtunnel package/new/phtunnel
-svn co https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
-svn co https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/phtunnel package/new/phtunnel
-svn co https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
+# svn co https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/luci-app-phtunnel package/new/luci-app-phtunnel
+# svn co https://github.com/teasiu/dragino2/trunk/devices/common/diy/package/teasiu/phtunnel package/new/phtunnel
+# svn co https://github.com/QiuSimons/dragino2-teasiu/trunk/package/teasiu/luci-app-oray package/new/luci-app-oray
 # Pandownload
 #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/pandownload-fake-server package/lean/pandownload-fake-server
 # Passwall
@@ -220,104 +220,106 @@ svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-core package/new
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/v2ray-plugin package/new/v2ray-plugin
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/xray-plugin package/new/xray-plugin
 # qBittorrent 下载
-svn co https://github.com/garypang13/openwrt-static-qb/trunk/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
-sed -i 's/4.3.3.10/4.3.4.10/g' package/lean/qBittorrent-Enhanced-Edition/Makefile
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-qbittorrent feeds/luci/applications/luci-app-qbittorrent
-ln -sf ../../../feeds/luci/applications/luci-app-qbittorrent ./package/feeds/luci/luci-app-qbittorrent
+# svn co https://github.com/garypang13/openwrt-static-qb/trunk/qBittorrent-Enhanced-Edition package/lean/qBittorrent-Enhanced-Edition
+# sed -i 's/4.3.3.10/4.3.4.10/g' package/lean/qBittorrent-Enhanced-Edition/Makefile
+# svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-qbittorrent feeds/luci/applications/luci-app-qbittorrent
+# ln -sf ../../../feeds/luci/applications/luci-app-qbittorrent ./package/feeds/luci/luci-app-qbittorrent
 # 清理内存
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-ramfree package/lean/luci-app-ramfree
 # ServerChan 微信推送
-git clone -b master --depth 1 https://github.com/tty228/luci-app-serverchan.git package/new/luci-app-serverchan
+# git clone -b master --depth 1 https://github.com/tty228/luci-app-serverchan.git package/new/luci-app-serverchan
 # SmartDNS
 rm -rf ./feeds/packages/net/smartdns
 svn co https://github.com/Lienol/openwrt-packages/trunk/net/smartdns feeds/packages/net/smartdns
 rm -rf ./feeds/luci/applications/luci-app-smartdns
 svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
 # ShadowsocksR Plus+ 依赖
-rm -rf ./feeds/packages/net/kcptun
-rm -rf ./feeds/packages/net/proxychains-ng
-rm -rf ./feeds/packages/net/shadowsocks-libev
-rm -rf ./feeds/packages/net/xray-core
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shadowsocksr-libev package/lean/shadowsocksr-libev
-svn co https://github.com/fw876/helloworld/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/pdnsd-alt package/lean/pdnsd
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/kcptun package/lean/kcptun
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/microsocks package/lean/microsocks
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dns2socks package/lean/dns2socks
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/lean/redsocks2
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/proxychains-ng package/lean/proxychains-ng
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package/lean/ipt2socks
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/lean/simple-obfs
-svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/lean/trojan
-svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
-svn co https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
-svn co https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
-ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
-# ShadowsocksR Plus+
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
-rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
-pushd package/lean
-#wget -qO - https://github.com/fw876/helloworld/pull/513.patch | patch -p1
-wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/c1674ad.patch | patch -p1
-popd
-pushd package/lean/luci-app-ssr-plus
-sed -i 's,default n,default y,g' Makefile
-sed -i 's,Xray:xray ,Xray:xray-core ,g' Makefile
-sed -i '/V2ray:v2ray/d' Makefile
-sed -i '/plugin:v2ray/d' Makefile
-#sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowsocksr/subscribe.lua
-sed -i 's,ispip.clang.cn/all_cn,cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
-sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,' root/etc/init.d/shadowsocksr luasrc/model/cbi/shadowsocksr/advanced.lua
-sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
-popd
-# 订阅转换
-svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
-ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
-svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
-ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
-svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson feeds/packages/libs/rapidjson
-ln -sf ../../../feeds/packages/libs/rapidjson ./package/feeds/packages/rapidjson
-svn co https://github.com/immortalwrt/packages/trunk/libs/libcron feeds/packages/libs/libcron
-ln -sf ../../../feeds/packages/libs/libcron ./package/feeds/packages/libcron
-svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp feeds/packages/libs/quickjspp
-ln -sf ../../../feeds/packages/libs/quickjspp ./package/feeds/packages/quickjspp
+# rm -rf ./feeds/packages/net/kcptun
+# rm -rf ./feeds/packages/net/proxychains-ng
+# rm -rf ./feeds/packages/net/shadowsocks-libev
+# rm -rf ./feeds/packages/net/xray-core
+# #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shadowsocksr-libev package/lean/shadowsocksr-libev
+# svn co https://github.com/fw876/helloworld/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/pdnsd-alt package/lean/pdnsd
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/kcptun package/lean/kcptun
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/srelay package/lean/srelay
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/microsocks package/lean/microsocks
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dns2socks package/lean/dns2socks
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/lean/redsocks2
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/proxychains-ng package/lean/proxychains-ng
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package/lean/ipt2socks
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/lean/simple-obfs
+# svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/lean/trojan
+# svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
+# svn co https://github.com/fw876/helloworld/trunk/v2ray-core package/lean/v2ray-core
+# svn co https://github.com/immortalwrt/packages/trunk/net/shadowsocks-rust feeds/packages/net/shadowsocks-rust
+# ln -sf ../../../feeds/packages/net/shadowsocks-rust ./package/feeds/packages/shadowsocks-rust
+# # ShadowsocksR Plus+
+# svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/lean/luci-app-ssr-plus
+# rm -rf ./package/lean/luci-app-ssr-plus/po/zh_Hans
+# pushd package/lean
+# #wget -qO - https://github.com/fw876/helloworld/pull/513.patch | patch -p1
+# wget -qO - https://github.com/QiuSimons/helloworld-fw876/commit/c1674ad.patch | patch -p1
+# popd
+# pushd package/lean/luci-app-ssr-plus
+# sed -i 's,default n,default y,g' Makefile
+# sed -i 's,Xray:xray ,Xray:xray-core ,g' Makefile
+# sed -i '/V2ray:v2ray/d' Makefile
+# sed -i '/plugin:v2ray/d' Makefile
+# #sed -i '/result.encrypt_method/a\result.fast_open = "1"' root/usr/share/shadowsocksr/subscribe.lua
+# sed -i 's,ispip.clang.cn/all_cn,cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute,' root/etc/init.d/shadowsocksr
+# sed -i 's,YW5vbnltb3Vz/domain-list-community/release/gfwlist.txt,Loyalsoldier/v2ray-rules-dat/release/gfw.txt,' root/etc/init.d/shadowsocksr luasrc/model/cbi/shadowsocksr/advanced.lua
+# sed -i '/Clang.CN.CIDR/a\o:value("https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt", translate("QiuSimons/Chnroute"))' luasrc/model/cbi/shadowsocksr/advanced.lua
+# popd
+# # 订阅转换
+# svn co https://github.com/immortalwrt/packages/trunk/net/subconverter feeds/packages/net/subconverter
+# ln -sf ../../../feeds/packages/net/subconverter ./package/feeds/packages/subconverter
+# svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2 feeds/packages/libs/jpcre2
+# ln -sf ../../../feeds/packages/libs/jpcre2 ./package/feeds/packages/jpcre2
+# svn co https://github.com/immortalwrt/packages/trunk/libs/rapidjson feeds/packages/libs/rapidjson
+# ln -sf ../../../feeds/packages/libs/rapidjson ./package/feeds/packages/rapidjson
+# svn co https://github.com/immortalwrt/packages/trunk/libs/libcron feeds/packages/libs/libcron
+# ln -sf ../../../feeds/packages/libs/libcron ./package/feeds/packages/libcron
+# svn co https://github.com/immortalwrt/packages/trunk/libs/quickjspp feeds/packages/libs/quickjspp
+# ln -sf ../../../feeds/packages/libs/quickjspp ./package/feeds/packages/quickjspp
 # 网易云音乐解锁
-git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
+# git clone --depth 1 https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/new/UnblockNeteaseMusic
 # USB 打印机
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-usb-printer package/lean/luci-app-usb-printer
 # UU加速器
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-uugamebooster package/lean/luci-app-uugamebooster
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/uugamebooster package/lean/uugamebooster
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-uugamebooster package/lean/luci-app-uugamebooster
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/uugamebooster package/lean/uugamebooster
 # KMS 激活助手
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-vlmcsd package/lean/luci-app-vlmcsd
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/vlmcsd package/lean/vlmcsd
 # VSSR
-git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
-git clone -b master --depth 1 https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
-sed -i 's,default n,default y,g' package/lean/luci-app-vssr/Makefile
-sed -i '/V2ray:v2ray/d' package/lean/luci-app-vssr/Makefile
-sed -i '/plugin:v2ray/d' package/lean/luci-app-vssr/Makefile
-sed -i '/result.encrypt_method/a\result.fast_open = "1"' package/lean/luci-app-vssr/root/usr/share/vssr/subscribe.lua
-sed -i 's,ispip.clang.cn/all_cn.txt,raw.sevencdn.com/QiuSimons/Chnroute/master/dist/chnroute/chnroute.txt,g' package/lean/luci-app-vssr/luasrc/controller/vssr.lua
-sed -i 's,ispip.clang.cn/all_cn.txt,raw.sevencdn.com/QiuSimons/Chnroute/master/dist/chnroute/chnroute.txt,g' package/lean/luci-app-vssr/root/usr/share/vssr/update.lua
+# git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
+# git clone -b master --depth 1 https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
+# sed -i 's,default n,default y,g' package/lean/luci-app-vssr/Makefile
+# sed -i '/V2ray:v2ray/d' package/lean/luci-app-vssr/Makefile
+# sed -i '/plugin:v2ray/d' package/lean/luci-app-vssr/Makefile
+# sed -i '/result.encrypt_method/a\result.fast_open = "1"' package/lean/luci-app-vssr/root/usr/share/vssr/subscribe.lua
+# sed -i 's,ispip.clang.cn/all_cn.txt,raw.sevencdn.com/QiuSimons/Chnroute/master/dist/chnroute/chnroute.txt,g' package/lean/luci-app-vssr/luasrc/controller/vssr.lua
+# sed -i 's,ispip.clang.cn/all_cn.txt,raw.sevencdn.com/QiuSimons/Chnroute/master/dist/chnroute/chnroute.txt,g' package/lean/luci-app-vssr/root/usr/share/vssr/update.lua
 # 网络唤醒
-svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
+# svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 # 流量监视
 git clone -b master --depth 1 https://github.com/brvphoenix/wrtbwmon.git package/new/wrtbwmon
 git clone -b master --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon.git package/new/luci-app-wrtbwmon
 # 迅雷快鸟宽带加速
-git clone --depth 1 https://github.com/garypang13/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
+# git clone --depth 1 https://github.com/garypang13/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
 # Zerotier
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
-cp -f ../PATCH/new/script/move_2_services.sh ./feeds/luci/applications/luci-app-zerotier/move_2_services.sh
-pushd feeds/luci/applications/luci-app-zerotier
-bash move_2_services.sh
-popd
-ln -sf ../../../feeds/luci/applications/luci-app-zerotier ./package/feeds/luci/luci-app-zerotier
-rm -rf ./feeds/packages/net/zerotier/files/etc/init.d/zerotier
+# svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
+# cp -f ../PATCH/new/script/move_2_services.sh ./feeds/luci/applications/luci-app-zerotier/move_2_services.sh
+# pushd feeds/luci/applications/luci-app-zerotier
+# bash move_2_services.sh
+# popd
+# ln -sf ../../../feeds/luci/applications/luci-app-zerotier ./package/feeds/luci/luci-app-zerotier
+# rm -rf ./feeds/packages/net/zerotier/files/etc/init.d/zerotier
 
+# luci-app-statistics
+# svn co https://github.com/openwrt/luci/branches/openwrt-21.02/applications/luci-app-statistics feeds/luci/applications/luci-app-statistics
 
 ### 最后的收尾工作 ###
 # Lets Fuck
@@ -326,6 +328,9 @@ cp -f ../PATCH/new/script/fuck package/base-files/files/usr/bin/fuck
 cp -f ../PATCH/new/script/chinadnslist package/base-files/files/usr/bin/chinadnslist
 # 最大连接数
 sed -i 's/16384/65535/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
+# 默认IP地址
+sed -i 's/192.168.1.1/10.0.0.1/' package/base-files/files/bin/config_generate
+
 # 生成默认配置及缓存
 rm -rf .config
 
