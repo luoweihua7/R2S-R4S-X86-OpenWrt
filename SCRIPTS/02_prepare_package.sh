@@ -94,8 +94,8 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # 访问控制
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
-cp -rf ../PATCH/duplicate/luci-app-control-weburl ./package/new/luci-app-control-weburl
+# svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-accesscontrol package/lean/luci-app-accesscontrol
+# cp -rf ../PATCH/duplicate/luci-app-control-weburl ./package/new/luci-app-control-weburl
 # 广告过滤 Adbyby
 # svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-adbyby-plus package/lean/luci-app-adbyby-plus
 # svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby package/lean/adbyby
@@ -189,7 +189,7 @@ svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package/ne
 # 上网 APP 过滤
 # git clone -b master --depth 1 https://github.com/destan19/OpenAppFilter.git package/new/OpenAppFilter
 # OLED 驱动程序
-git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
+# git clone -b master --depth 1 https://github.com/NateLol/luci-app-oled.git package/new/luci-app-oled
 # OpenClash
 git clone -b master --depth 1 https://github.com/vernesong/OpenClash.git package/new/luci-app-openclash
 # 花生壳内网穿透
