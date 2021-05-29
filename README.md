@@ -1,3 +1,15 @@
+# 个人修改部分
+## 仅个人使用
+
+- 移除了不使用的插件：微信推送，网易云解锁，迅雷快鸟，京东签到，Zerotier，FRPC，FRPS，无线打印，网络唤醒，USB打印服务器，S5RP+，HelloWorld
+- 移除了没有展示的插件：luci-app-adbyby-plus（adbyby去广告），luci-app-mentohust（锐捷认证），luci-theme-edge（edge主题），pandownload-fake-server（PanDownload），luci-app-qbittorrent（qBittorrent），luci-app-uugamebooster （UU加速器），订阅转换
+- 移除主题Argon，并将bootstrap设置为默认主题（无网络下，Argon会因加载polyfill的资源超时，导致页面白屏时间较长）
+- 增加了R2S的风扇控制脚本
+- 默认IP地址修改为10.0.0.1，电视上使用时比较快输入
+
+------
+<br><br><br>
+
 <p align="center">
 <img width="768" src="https://raw.githubusercontent.com/QiuSimons/Others/master/YAOF.png" >
 </p>
