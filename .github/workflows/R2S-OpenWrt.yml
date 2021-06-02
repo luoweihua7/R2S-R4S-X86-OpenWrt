@@ -1,10 +1,18 @@
 name: R2S-OpenWrt
 
 on:
-#  schedule:
-#    - cron: 5 6 * * 0
+  # schedule:
+  #   - cron: "0 */12 * * *"
   watch:
     types: started
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log Level'
+        required: true
+        default: 'info'
+      tags:
+        description: ''
 
 jobs:
   build:

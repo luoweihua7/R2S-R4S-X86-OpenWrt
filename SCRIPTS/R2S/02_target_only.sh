@@ -82,6 +82,14 @@ CONFIG_CRYPTO_SM3_ARM64_CE=y
 CONFIG_CRYPTO_SM4_ARM64_CE=y
 ' >> ./target/linux/rockchip/armv8/config-5.4
 
+# R2S风扇脚本
+mkdir -p ./files/usr/bin ./files/etc/init.d ./files/etc/rc.d
+wget https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/usr/bin/start-rk3328-pwm-fan.sh -qNP ./files/usr/bin
+chmod +x ./files/usr/bin/start-rk3328-pwm-fan.sh
+wget https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/etc/init.d/fa-rk3328-pwmfan -qNP ./files/etc/init.d
+chmod +x ./files/etc/init.d/fa-rk3328-pwmfan
+ln -sf ../init.d/fa-rk3328-pwmfan ./files/etc/rc.d/S96fa-rk3328-pwmfan
+
 # 预配置一些插件
 cp -rf ../PATCH/R2S/files ./files
 

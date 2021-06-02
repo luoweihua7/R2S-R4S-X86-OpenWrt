@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#Argon 主题
-uci set luci.main.mediaurlbase='/luci-static/argon'
+#bootstrap 主题
+uci set luci.main.mediaurlbase='/luci-static/bootstrap'
 uci commit luci
 
 #时区设置
